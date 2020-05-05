@@ -23,8 +23,6 @@ pipeline {
                 }
             }
         }
-    }
-}
           stage('Push Docker image') { 
               when {
                   branch 'master'
