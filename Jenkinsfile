@@ -10,3 +10,18 @@ pipeline {
         }
     }
 }
+        state('Build Docker image'){
+            when {
+                branch 'master'
+            }
+            steps {
+                script {
+                    app = docker.build("smkdevops/train-schedule")
+                    app.inside {
+                        sh 'echo $(curl localhost:8080)'
+                    }
+                }
+            }
+        }
+    }
+}
